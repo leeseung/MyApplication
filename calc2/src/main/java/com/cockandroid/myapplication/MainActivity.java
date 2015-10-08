@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
         sub = (Button) findViewById(R.id.sub);
         mul = (Button) findViewById(R.id.mul);
         div = (Button) findViewById(R.id.div);
-        text1 = (TextView) findViewById(R.id.t1);
+        text1 = (TextView) findViewById(R.id.text1);
 
         add.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent m) {
