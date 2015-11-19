@@ -19,7 +19,7 @@
 
         <activity
 
-            android:name="com.cockandroid.myapplication.intent_second"
+            android:name="com.cockandroid.myapplication.SecondActivity"
             android:label="MyApplication">
 
         </activity>

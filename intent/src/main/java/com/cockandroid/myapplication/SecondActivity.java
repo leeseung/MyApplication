@@ -1,70 +1,42 @@
 package com.cockandroid.myapplication;
-
 import android.app.Activity;
-import android.content.Context;
-//import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Calendar;
 
 public class SecondActivity extends Activity {
-    int Viewvalue;
-    Button btnReturn;
+    Button btnresult;
+    int value = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second);
-        setTitle("Second Activity");
-        final int value = 0;
-        final boolean divByZero = false;
+        setTitle("세컨드 액티비티");
 
-        Intent inIntent = getIntent();
-        switch (inIntent.getStringExtra("ViewReslut")) {
-            case "plus":
-                Viewvalue = inIntent.getIntExtra("Num1", 0) + inIntent.getIntExtra("Num2", 0);
-                break;
-            case "minus":
-                Viewvalue = inIntent.getIntExtra("Num1", 0) - inIntent.getIntExtra("Num2", 0);
-                break;
-            case "mul":
-                Viewvalue = inIntent.getIntExtra("Num1", 0) * inIntent.getIntExtra("Num2", 0);
-                break;
-            case "div":
-                if (inIntent.getIntExtra("Num2", 0) == 0) {
-                    Viewvalue = 0;
-                } else
-                    Viewvalue = inIntent.getIntExtra("Num1", 0) / inIntent.getIntExtra("Num2", 0);
-                break;
+        Intent Intent = getIntent(); // intent 받아옴!!
 
+        String re = Intent.getStringExtra("re"); // 라디오버튼으로 클릭한거 가져와서 계산하는 소스
+        if(re.equals("+")){
+            value = Intent.getIntExtra("Num1", 0) + Intent.getIntExtra("Num2", 0);
+        }else if(re.equals("-")){
+            value = Intent.getIntExtra("Num1", 0) - Intent.getIntExtra("Num2", 0);
+        }else if(re.equals("*")){
+            value = Intent.getIntExtra("Num1", 0) * Intent.getIntExtra("Num2", 0);
+        }else if(re.equals("/")){
+            value = Intent.getIntExtra("Num1", 0) / Intent.getIntExtra("Num2", 0);
         }
 
-
-        btnReturn = (Button)findViewById(R.id.btnReturn);
-        btnReturn.setOnClickListener(new View.OnClickListener() {
+        btnresult = (Button)findViewById(R.id.btnback);
+        btnresult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent outIntent = new Intent(getApplicationContext(), MainActivity.class);
-                outIntent.putExtra("result", Viewvalue);
-                if (divByZero) setResult(100, outIntent);
-                else setResult(RESULT_OK, outIntent);
-
+                outIntent.putExtra("result", value); //계산 받아서 메인액티비티로 돌아가면 토스트창으로 뿌려줌
+                setResult(RESULT_OK, outIntent);
                 finish();
             }
         });
-
-
-
     }
 }
