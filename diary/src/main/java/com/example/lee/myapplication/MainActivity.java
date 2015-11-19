@@ -2,7 +2,7 @@ package com.example.lee.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,6 +72,7 @@ public class MainActivity extends Activity {
             inFs.read(txt);
             inFs.close();
             diaryStr = (new String(txt)).trim();
+            editDiary.setHint(diaryStr);
             btnWrite.setText("수정하기");
         }   catch (IOException e){
             editDiary.setHint("일기 없음");
