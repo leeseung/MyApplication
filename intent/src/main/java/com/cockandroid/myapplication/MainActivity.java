@@ -12,16 +12,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Calendar;
+
 
 class MainActivity extends Activity {
-
+    EditText editNum1,editNum2;
+    RadioGroup Group;
+    RadioButton plus,minus,multi,div;
+    Button btnac;
+    String ViewReslut;
+    int result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +32,54 @@ class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("메인 액티비티");
+        editNum1 = (EditText) findViewById(R.id.edtNum1);
+        editNum2 = (EditText) findViewById(R.id.edtNum2);
+        Group = (RadioGroup)findViewById(R.id.group);
+        btnac = (Button)findViewById(R.id.btnNewActivity);
 
 
-
-        Button btnNewActivity = (Button)findViewById(R.id.btnNewActivity);
-        btnNewActivity.setOnClickListener(new View.OnClickListener() {
+        btnac.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                EditText editNum1 = (EditText) findViewById(R.id.edtNum1);
-                EditText editNum2 = (EditText) findViewById(R.id.edtNum2);
-                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                android.content.Intent intent = new android.content.Intent(getApplicationContext(), SecondActivity.class);
+
+                if (editNum1.getText().toString().isEmpty() || editNum2.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "숫자를 입력해주세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 intent.putExtra("Num1", Integer.parseInt(editNum1.getText().toString()));
                 intent.putExtra("Num2", Integer.parseInt(editNum2.getText().toString()));
+                intent.putExtra("Type", ViewReslut);
                 startActivityForResult(intent, 0);
             }
         });
+        Group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (Group.getCheckedRadioButtonId()) {
+                    case R.id.plus:
+                        ViewReslut = "plus";
+                        break;
+                    case R.id.minus:
+                        ViewReslut= "minus";
+                        break;
+                    case R.id.multi:
+                        ViewReslut = "mul";
+                        break;
+                    case R.id.div:
+                        ViewReslut = "div";
+                        break;
+                }
+            }
+        });
+    }
+    protected void onActivityResult(int requestCode, int resultCode, android.content.Intent data) {
+        int value = data.getIntExtra("Value", 0);
+        if(resultCode == 100)
+            Toast.makeText(getApplicationContext(), "0으로 나눌 수 없습니다.", Toast.LENGTH_SHORT).show();
+        else if(resultCode == RESULT_OK)
+            Toast.makeText(getApplicationContext(), "합계 : " + value, Toast.LENGTH_SHORT).show();
     }
 
     @Override

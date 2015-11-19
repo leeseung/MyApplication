@@ -19,53 +19,52 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
-class SecondActivity extends Activity {
-
-
+public class SecondActivity extends Activity {
+    int Viewvalue;
+    Button btnReturn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setTitle("Second 액티비티");
-
-
+        setContentView(R.layout.second);
+        setTitle("Second Activity");
+        final int value = 0;
+        final boolean divByZero = false;
 
         Intent inIntent = getIntent();
-        final int hapValue = inIntent.getIntExtra("Num1",0)
-                + inIntent.getIntExtra("Num2",0);
-        Button btnReturn = (Button) findViewById(R.id.btnReturn);
-        btnReturn.setOnClickListener(new View.OnClickListener(){
+        switch (inIntent.getStringExtra("ViewReslut")) {
+            case "plus":
+                Viewvalue = inIntent.getIntExtra("Num1", 0) + inIntent.getIntExtra("Num2", 0);
+                break;
+            case "minus":
+                Viewvalue = inIntent.getIntExtra("Num1", 0) - inIntent.getIntExtra("Num2", 0);
+                break;
+            case "mul":
+                Viewvalue = inIntent.getIntExtra("Num1", 0) * inIntent.getIntExtra("Num2", 0);
+                break;
+            case "div":
+                if (inIntent.getIntExtra("Num2", 0) == 0) {
+                    Viewvalue = 0;
+                } else
+                    Viewvalue = inIntent.getIntExtra("Num1", 0) / inIntent.getIntExtra("Num2", 0);
+                break;
 
+        }
+
+
+        btnReturn = (Button)findViewById(R.id.btnReturn);
+        btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent outIntent = new Intent(getApplicationContext(),MainActivity.class);
-                outIntent.putExtra("Hap",hapValue);
-                setResult(RESULT_OK,outIntent);
+                Intent outIntent = new Intent(getApplicationContext(), MainActivity.class);
+                outIntent.putExtra("result", Viewvalue);
+                if (divByZero) setResult(100, outIntent);
+                else setResult(RESULT_OK, outIntent);
+
                 finish();
             }
         });
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

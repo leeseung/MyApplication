@@ -6,15 +6,47 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtNum1"/>
+        android:id="@+id/edtNum1"
+        android:hint="첫번째 숫자입력"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtNum2"/>
-    <Button
+        android:id="@+id/edtNum2"
+        android:hint="두번째 숫자입력" />
+    <RadioGroup
+    android:id="@+id/group"
+    android:layout_below="@+id/Num1"
+    android:layout_alignParentStart="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+      android:layout_gravity="left">
+
+    <RadioButton
+        android:id="@+id/plus"
+        android:text="더하기"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RadioButton
+        android:id="@+id/minus"
+        android:text="빼기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RadioButton
+        android:id="@+id/multi"
+        android:text="곱하기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RadioButton
+        android:id="@+id/div"
+        android:text="나누기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnNewActivity"
-        android:text="더하기"/>
+        android:text="계산하기"/>
 
 </LinearLayout>
