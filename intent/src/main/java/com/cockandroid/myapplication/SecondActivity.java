@@ -6,14 +6,14 @@ import android.view.View;
 import android.widget.Button;
 
 public class SecondActivity extends Activity {
-    Button btnresult;
+    Button btnResult;
     int value = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second);
-        setTitle("세컨드 액티비티");
+        setTitle("Second 액티비티");
 
         Intent Intent = getIntent(); // intent 받아옴!!
 
@@ -28,8 +28,8 @@ public class SecondActivity extends Activity {
             value = Intent.getIntExtra("Num1", 0) / Intent.getIntExtra("Num2", 0);
         }
 
-        btnresult = (Button)findViewById(R.id.btnback);
-        btnresult.setOnClickListener(new View.OnClickListener() {
+        btnResult = (Button)findViewById(R.id.btnBack);
+        btnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent outIntent = new Intent(getApplicationContext(), MainActivity.class);

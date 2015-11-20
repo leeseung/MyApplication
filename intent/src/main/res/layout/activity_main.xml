@@ -6,21 +6,19 @@
     android:background="#ffffff" >
 
     <EditText
-        android:id="@+id/edtnum1"
+        android:id="@+id/edtNum1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" >
+        android:hint="숫자 1번">
 
-        <requestFocus />
+
     </EditText>
 
     <EditText
-        android:id="@+id/edtnum2"
+        android:id="@+id/edtNum2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
+        android:hint="숫자 2번"/>
 
     <RadioGroup
         android:id="@+id/radioGroup1"
@@ -41,20 +39,20 @@
             android:text="빼기" />
 
         <RadioButton
-            android:id="@+id/multiplication"
+            android:id="@+id/multi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="곱하기" />
 
         <RadioButton
-            android:id="@+id/division"
+            android:id="@+id/div"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="나누기" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/btnresult"
+        android:id="@+id/btnResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="계산하기"

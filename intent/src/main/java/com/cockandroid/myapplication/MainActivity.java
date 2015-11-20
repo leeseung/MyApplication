@@ -21,17 +21,18 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("계산기");
+        setTitle("Main 액티비티");
 
-        edtNum1 = (EditText)findViewById(R.id.edtnum1);
-        edtNum2 = (EditText)findViewById(R.id.edtnum2);
+        edtNum1 = (EditText)findViewById(R.id.edtNum1);
+        edtNum2 = (EditText)findViewById(R.id.edtNum2);
 
         plus = (RadioButton)findViewById(R.id.plus);
         minus = (RadioButton)findViewById(R.id.minus);
-        multi = (RadioButton)findViewById(R.id.multiplication);
-        div = (RadioButton)findViewById(R.id.division);
+        multi = (RadioButton)findViewById(R.id.multi);
+        div = (RadioButton)findViewById(R.id.div);
 
-        btnresult = (Button)findViewById(R.id.btnresult);
+        btnresult = (Button)findViewById(R.id.btnResult);
+
 
         btnresult.setOnClickListener(new View.OnClickListener() {
             @Override
