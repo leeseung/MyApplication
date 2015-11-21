@@ -23,8 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnWrite"
-        android:enabled="false"
-        android:text="Button"/>
+        android:enabled="true"
+        android:text="새로저장"/>
 
 
 </LinearLayout>

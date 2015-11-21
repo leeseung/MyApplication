@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
     EditText editDiary;
     Button btnWrite;
     String filename;
+    String Tempfilename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,14 @@ public class MainActivity extends Activity {
         int cMonth = cal.get(Calendar.MONTH);
         int cDay = cal.get(Calendar.DAY_OF_MONTH);
 
+        Tempfilename = Integer.toString(cYar) +"_"+Integer.toString(cMonth+1)+"_"
+                +Integer.toString(cDay)+".txt";
+        String str1 = readDiary(Tempfilename);
+        editDiary.setText(str1);
+
         dp.init(cYar, cMonth, cDay, new DatePicker.OnDateChangedListener() {
+
+
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 filename = Integer.toString(year) +"_"+Integer.toString(monthOfYear+1)+"_"
@@ -47,6 +55,7 @@ public class MainActivity extends Activity {
                 editDiary.setText(str);
                 btnWrite.setEnabled(true);
             }
+
         });
         btnWrite.setOnClickListener(new View.OnClickListener() {
             @Override
