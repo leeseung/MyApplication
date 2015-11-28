@@ -13,15 +13,10 @@
         android:id="@+id/reRead"
         android:title="다시읽기" />
 
-    <item android:title="파일 삭제">
-        <menu>
-            <item
-                android:id="@+id/deleteOk"
-                android:title="파일 삭제" />
-            <item
-                android:id="@+id/deleteCancel"
-                android:title="취소" />
-        </menu>
+    <item
+        android:title="파일 삭제"
+        android:id="@+id/deleteChoice">
+
     </item>
 
     <item android:title="글씨 크기">
