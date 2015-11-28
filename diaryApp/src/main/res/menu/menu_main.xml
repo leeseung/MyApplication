@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/reRead"
+        android:title="다시읽기" />
+
+    <item android:title="파일 삭제">
+        <menu>
+            <item
+                android:id="@+id/deleteOk"
+                android:title="파일 삭제" />
+            <item
+                android:id="@+id/deleteCancel"
+                android:title="취소" />
+        </menu>
+    </item>
+
+    <item android:title="글씨 크기">
+        <menu>
+            <item
+                android:id="@+id/fontSizeBig"
+                android:title="크게" />
+            <item
+                android:id="@+id/fontSizeNormal"
+                android:title="중간" />
+            <item
+                android:id="@+id/fontSizeSmall"
+                android:title="작게" />
+        </menu>
+    </item>
+
+
+</menu>
