@@ -16,14 +16,7 @@
     <item
         android:title="파일 삭제"
         android:id="@+id/Delete">
-        <!--<menu>
-            <item
-                android:id="@+id/deleteOk"
-                android:title="파일 삭제" />
-            <item
-                android:id="@+id/deleteCancel"
-                android:title="취소" />
-        </menu>-->
+
     </item>
 
     <item android:title="글씨 크기">
