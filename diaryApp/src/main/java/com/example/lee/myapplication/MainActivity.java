@@ -160,50 +160,58 @@ public class MainActivity extends AppCompatActivity {
                 String str = readDiary(filename);
                 editDiary.setText(str);
                 return true;
-            case R.id.deleteChoice:      //지우기를 선택했다면
-
-                Calendar cal = Calendar.getInstance();  // 현재 날짜를 받아와서 저장
-                int cYar = cal.get(Calendar.YEAR);
-                int cMonth = cal.get(Calendar.MONTH);
-                int cDay = cal.get(Calendar.DAY_OF_MONTH);
-
-                Todayfilename = Integer.toString(cYar) + "년" + Integer.toString(cMonth + 1) + "월" //초기에 현재날짜의 년,월,일을 임의의 형태의 파일이름으로 저장
-                        + Integer.toString(cDay) + "일.txt";
+            case R.id.Delete:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                         this);
+
                 // 제목셋팅
-                alertDialogBuilder.setTitle("파일삭제");
+                alertDialogBuilder.setTitle("프로그램 종료");
+
                 // AlertDialog 셋팅
                 alertDialogBuilder
-                        .setMessage(Todayfilename + "파일을 삭제하겠습니까?")
+                        .setMessage(textView.getText() + "를 삭제하겠습니까?")
                         .setCancelable(false)
                         .setPositiveButton("삭제",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(
                                             DialogInterface dialog, int id) {
-                                        String temp = mydiary + "/" + filename; // 파일의 경로와이름을 temp에 저장
-                                        File file = new File(temp); //파일객체 생성
-                                        file.delete();  // 파일삭제
+                                        // 프로그램을 종료한다
+                                        String temp = mydiary + "/" + filename;
+                                        File file = new File(temp);
+                                        file.delete();
                                         Toast.makeText(getApplicationContext(), "해당파일을 삭제하였습니다", Toast.LENGTH_LONG).show();
                                         editDiary.setText("");
                                         editDiary.setHint("일기 없음");
-                                        //return true;
+
                                     }
                                 })
                         .setNegativeButton("취소",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(
                                             DialogInterface dialog, int id) {
-                                        // 다이얼로그를 취소한다
                                         Toast.makeText(getApplicationContext(), "삭제를 취소하였습니다.", Toast.LENGTH_LONG).show();
+                                        // 다이얼로그를 취소한다
                                         dialog.cancel();
                                     }
                                 });
+
                 // 다이얼로그 생성
                 AlertDialog alertDialog = alertDialogBuilder.create();
+
                 // 다이얼로그 보여주기
                 alertDialog.show();
                 break;
+            /*case R.id.deleteOk:      //지우기를 선택했다면
+                String temp = mydiary + "/" + filename;
+                File file = new File(temp);
+                file.delete();
+                Toast.makeText(getApplicationContext(), "해당파일을 삭제하였습니다", Toast.LENGTH_LONG).show();
+                editDiary.setText("");
+                editDiary.setHint("일기 없음");
+                return true;
+            case R.id.deleteCancel:  // 지우기를 취소했다면
+                Toast.makeText(getApplicationContext(), "삭제를 취소하였습니다.", Toast.LENGTH_LONG).show();
+                return true;*/
             case R.id.fontSizeBig:     // 글씨를 크게변경
                 editDiary.setTextSize(30);
                 Toast.makeText(getApplicationContext(), "글씨크기 ( 크게 )", Toast.LENGTH_LONG).show();
@@ -221,5 +229,4 @@ public class MainActivity extends AppCompatActivity {
         return false;   //옵션메뉴중 선택되지 않으면 false리턴
     }
 }
-
 
