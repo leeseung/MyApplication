@@ -157,39 +157,37 @@ public class MainActivity extends AppCompatActivity {
         final File mydiary = new File(strSDpath + "/mydiary");
         switch (item.getItemId()) {     //클릭한 옵션메뉴가 어떤것인지 판단
             case R.id.reRead:         // 다시읽기를 선택했다면
-                String str = readDiary(filename);
-                editDiary.setText(str);
+                String str = readDiary(filename); //해당 파일이름을 읽어와 저장
+                editDiary.setText(str); //에디트 텍스트에 set함
                 return true;
-            case R.id.Delete:
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+            case R.id.Delete:    //파일 삭제를 선택했다면
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder( //AlertDialog를 생성
                         this);
 
-                // 제목셋팅
-                alertDialogBuilder.setTitle("프로그램 종료");
 
                 // AlertDialog 셋팅
                 alertDialogBuilder
-                        .setMessage(textView.getText() + "를 삭제하겠습니까?")
+                        .setMessage(textView.getText() + "를 삭제하겠습니까?") //다이얼로그의 메세지
                         .setCancelable(false)
                         .setPositiveButton("삭제",
-                                new DialogInterface.OnClickListener() {
+                                new DialogInterface.OnClickListener() { //삭제를 누를시
                                     public void onClick(
                                             DialogInterface dialog, int id) {
                                         // 프로그램을 종료한다
-                                        String temp = mydiary + "/" + filename;
-                                        File file = new File(temp);
-                                        file.delete();
-                                        Toast.makeText(getApplicationContext(), "해당파일을 삭제하였습니다", Toast.LENGTH_LONG).show();
+                                        String temp = mydiary + "/" + filename; //파임경로와 이름을 temp에 저장
+                                        File file = new File(temp); //파일 객체생성
+                                        file.delete();  //파일 삭제
+                                        Toast.makeText(getApplicationContext(), "해당파일을 삭제하였습니다", Toast.LENGTH_LONG).show(); //토스트 메세지 보냄
                                         editDiary.setText("");
                                         editDiary.setHint("일기 없음");
 
                                     }
                                 })
-                        .setNegativeButton("취소",
+                        .setNegativeButton("취소",             //취소를 누를경우
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(
                                             DialogInterface dialog, int id) {
-                                        Toast.makeText(getApplicationContext(), "삭제를 취소하였습니다.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "삭제를 취소하였습니다.", Toast.LENGTH_LONG).show(); //토스트 메세지 보냄
                                         // 다이얼로그를 취소한다
                                         dialog.cancel();
                                     }
@@ -201,17 +199,6 @@ public class MainActivity extends AppCompatActivity {
                 // 다이얼로그 보여주기
                 alertDialog.show();
                 break;
-            /*case R.id.deleteOk:      //지우기를 선택했다면
-                String temp = mydiary + "/" + filename;
-                File file = new File(temp);
-                file.delete();
-                Toast.makeText(getApplicationContext(), "해당파일을 삭제하였습니다", Toast.LENGTH_LONG).show();
-                editDiary.setText("");
-                editDiary.setHint("일기 없음");
-                return true;
-            case R.id.deleteCancel:  // 지우기를 취소했다면
-                Toast.makeText(getApplicationContext(), "삭제를 취소하였습니다.", Toast.LENGTH_LONG).show();
-                return true;*/
             case R.id.fontSizeBig:     // 글씨를 크게변경
                 editDiary.setTextSize(30);
                 Toast.makeText(getApplicationContext(), "글씨크기 ( 크게 )", Toast.LENGTH_LONG).show();
