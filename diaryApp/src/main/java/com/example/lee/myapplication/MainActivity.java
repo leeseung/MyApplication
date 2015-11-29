@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     Button saveButton;   // 저장을 하는 버튼
     EditText editDiary;  // 일기내용을 보여주는 에디트텍스트
     String filename;     // 파일명을 담당할 문자열형 변수
-    String Todayfilename; // 초기에 현재날짜의 파일이름을 읽어올
     int nCheck = 0;
 
 
@@ -53,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
         int cDay = cal.get(Calendar.DAY_OF_MONTH);
 
 
-        Todayfilename = Integer.toString(cYar) + "년" + Integer.toString(cMonth + 1) + "월" //초기에 현재날짜의 년,월,일을 임의의 형태의 파일이름으로 저장
+        filename = Integer.toString(cYar) + "년" + Integer.toString(cMonth + 1) + "월" //초기에 현재날짜의 년,월,일을 임의의 형태의 파일이름으로 저장
                 + Integer.toString(cDay) + "일.txt";
-        String str1 = readDiary(Todayfilename);  // 파일이름을 읽어옴
+        String str1 = readDiary(filename);  // 파일이름을 읽어옴
         editDiary.setText(str1);
         saveButton.setEnabled(true);//읽어온 파일의 내용을 에디트 텍스트에 set함
         textView.setText(Integer.toString(cYar) + "년" + Integer.toString(cMonth + 1) + "월" //텍스트뷰에 임의의 형태의 날짜 이름으로 set하여 보여줌
