@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
     public void DatePickerView(View v) { //날짜를 선택받고 처리하는 메서드
         Calendar cal = Calendar.getInstance(); //초기에 현재날짜의 년,월,일을 정수형으로 저장
         int cYar = cal.get(Calendar.YEAR);
@@ -100,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
     DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() { //DatePickerDialog가 처리한 리스너
 
         @Override
@@ -162,8 +160,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.Delete:    //파일 삭제를 선택했다면
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder( //AlertDialog를 생성
                         this);
-
-
                 // AlertDialog 셋팅
                 alertDialogBuilder
                         .setMessage(textView.getText() + "를 삭제하겠습니까?") //다이얼로그의 메세지
@@ -179,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "해당파일을 삭제하였습니다", Toast.LENGTH_LONG).show(); //토스트 메세지 보냄
                                         editDiary.setText("");
                                         editDiary.setHint("일기 없음");
-
                                     }
                                 })
                         .setNegativeButton("취소",             //취소를 누를경우
@@ -191,10 +186,8 @@ public class MainActivity extends AppCompatActivity {
                                         dialog.cancel();
                                     }
                                 });
-
                 // 다이얼로그 생성
                 AlertDialog alertDialog = alertDialogBuilder.create();
-
                 // 다이얼로그 보여주기
                 alertDialog.show();
                 break;
