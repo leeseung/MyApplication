@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Image/Image.iml" filepath="$PROJECT_DIR$/Image/Image.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MyApplication4.iml" filepath="$PROJECT_DIR$/MyApplication4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyApplication7.iml" filepath="$PROJECT_DIR$/MyApplication7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SQlite/SQlite.iml" filepath="$PROJECT_DIR$/SQlite/SQlite.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/calc/calc.iml" filepath="$PROJECT_DIR$/calc/calc.iml" />
       <module fileurl="file://$PROJECT_DIR$/calc2/calc2.iml" filepath="$PROJECT_DIR$/calc2/calc2.iml" />
@@ -11,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/diary/diary.iml" filepath="$PROJECT_DIR$/diary/diary.iml" />
       <module fileurl="file://$PROJECT_DIR$/diaryApp/diaryApp.iml" filepath="$PROJECT_DIR$/diaryApp/diaryApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/intent/intent.iml" filepath="$PROJECT_DIR$/intent/intent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poster/poster.iml" filepath="$PROJECT_DIR$/poster/poster.iml" />
       <module fileurl="file://$PROJECT_DIR$/webview/webview.iml" filepath="$PROJECT_DIR$/webview/webview.iml" />
     </modules>
   </component>
