@@ -5,12 +5,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 
+import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -56,12 +58,36 @@ public class MainActivity extends Activity {
                 R.drawable.mov09, R.drawable.mov10
         };
 
+        String[] movieName = {                      // 영화제목 배열
+                "하류인생", "올드보이", "I am", "특종", "쎄시봉"
+                , "Great Debaters", "트랜스머신 : 만테라", "악마를 보았다"
+                , "아마데우스", "트루맨"
+        };
+
+
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            View view = (View) convertView;
+            view=View.inflate(MainActivity.this, R.layout.dialog, null);
+
+            view.setLayoutParams(new GridView.LayoutParams(100, 150));
+            view.setPadding(5, 5, 5, 5);
+
             ImageView imageView = new ImageView(context);
-            imageView.setLayoutParams(new GridView.LayoutParams(100, 150));
+            TextView textView = new TextView(context);
+           // textView.setLayoutParams(new GridView.LayoutParams(100, 150));
+
+            textView.setPadding(5, 5, 5, 5);
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            imageView.setPadding(5, 5, 5, 5);
+
+
+
+            //imageView.setLayoutParams(new GridView.LayoutParams(100, 150));
+            //imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            //imageView.setPadding(5, 5, 5, 5);
+
+
 
             final int pos = position;
             imageView.setOnClickListener(new View.OnClickListener() {
@@ -71,38 +97,7 @@ public class MainActivity extends Activity {
                     AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
                     ImageView ivPoster = (ImageView) dialogView.findViewById(R.id.ivPoster);
                     ivPoster.setImageResource(posterID[pos]);
-                    switch (pos) {
-                        case 0:
-                            dlg.setTitle("하류인생");
-                            break;
-                        case 1:
-                            dlg.setTitle("올드보이");
-                            break;
-                        case 2:
-                            dlg.setTitle("I am");
-                            break;
-                        case 3:
-                            dlg.setTitle("특종");
-                            break;
-                        case 4:
-                            dlg.setTitle("쎄시봉");
-                            break;
-                        case 5:
-                            dlg.setTitle("Great Debaters");
-                            break;
-                        case 6:
-                            dlg.setTitle("트랜스머신 : 만테라");
-                            break;
-                        case 7:
-                            dlg.setTitle("악마를 보았다");
-                            break;
-                        case 8:
-                            dlg.setTitle("아마데우스");
-                            break;
-                        case 9:
-                            dlg.setTitle("트루맨");
-                            break;
-                    }
+                    dlg.setTitle(movieName[pos]);
                     dlg.setIcon(R.drawable.ic_launcher);
                     dlg.setView(dialogView);
                     dlg.setNegativeButton("닫기", null);
@@ -110,8 +105,13 @@ public class MainActivity extends Activity {
                 }
             });
 
-            imageView.setImageResource(posterID[position]);
-            return imageView;
+            /*for (int i = 0; i < 4; i++) {
+                imageView.setImageResource(posterID[i]);
+            }
+            for (int i = 0; i < 4; i++) {
+                textView.setText(movieName[i]);
+            }*/
+           return imageView;
         }
     }
 
