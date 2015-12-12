@@ -8,7 +8,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/gridView1"
         android:gravity="center"
-        android:numColumns="4"></GridView>
+        android:numColumns="4"
+       ></GridView>
 
 
 </LinearLayout>

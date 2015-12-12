@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
 
         String[] movieName = {                      // 영화제목 배열
                 "하류인생", "올드보이", "I am", "특종", "쎄시봉"
-                , "Great Debaters", "트랜스머신 : 만테라", "악마를 보았다"
+                , "Great", "트랜스머신", "악마를 보았다"
                 , "아마데우스", "트루맨"
         };
 
@@ -68,35 +68,29 @@ public class MainActivity extends Activity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view = (View) convertView;
-            view=View.inflate(MainActivity.this, R.layout.dialog, null);
-
-            view.setLayoutParams(new GridView.LayoutParams(100, 150));
-            view.setPadding(5, 5, 5, 5);
-
-            ImageView imageView = new ImageView(context);
-            TextView textView = new TextView(context);
-           // textView.setLayoutParams(new GridView.LayoutParams(100, 150));
-
-            textView.setPadding(5, 5, 5, 5);
+            View gridView;
+            ImageView imageView;
+            LayoutInflater inflater = getLayoutInflater();
+            gridView= inflater.inflate(R.layout.dialog,null);
+            imageView = new ImageView(context);
+            imageView = (ImageView)gridView.findViewById(R.id.ivPoster);
+            TextView textView = (TextView) gridView.findViewById(R.id.tvPoster);
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            imageView.setPadding(5, 5, 5, 5);
+            textView.setPadding(1,1,1,1);
+            imageView.setImageResource(posterID[position]);
 
-
-
-            //imageView.setLayoutParams(new GridView.LayoutParams(100, 150));
-            //imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            //imageView.setPadding(5, 5, 5, 5);
-
+            textView.setText(movieName[position]);
 
 
             final int pos = position;
             imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
                 public void onClick(View v) {
-                    View dialogView = View.inflate(MainActivity.this, R.layout.dialog, null);
+                    View dialogView = (View) View.inflate(MainActivity.this, R.layout.content_main, null);
                     AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
-                    ImageView ivPoster = (ImageView) dialogView.findViewById(R.id.ivPoster);
+                    ImageView ivPoster = (ImageView) dialogView.findViewById(R.id.ivBig);
                     ivPoster.setImageResource(posterID[pos]);
+
                     dlg.setTitle(movieName[pos]);
                     dlg.setIcon(R.drawable.ic_launcher);
                     dlg.setView(dialogView);
@@ -105,15 +99,11 @@ public class MainActivity extends Activity {
                 }
             });
 
-            /*for (int i = 0; i < 4; i++) {
-                imageView.setImageResource(posterID[i]);
-            }
-            for (int i = 0; i < 4; i++) {
-                textView.setText(movieName[i]);
-            }*/
-           return imageView;
+            return gridView;
         }
-    }
+
+
+}
 
 }
 
